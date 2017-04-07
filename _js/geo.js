@@ -66,7 +66,7 @@ var geo_position_js=function() {
 			}
 			else
 			{
-				window.location="http://maps.google.com/maps?q=loc:"+latitude+","+longitude;
+				window.location="https://maps.google.com/maps?q=loc:"+latitude+","+longitude;
 			}
 		}
 

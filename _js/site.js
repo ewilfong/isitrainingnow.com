@@ -23,9 +23,9 @@ function get_WeatherJSON(loc) {//pass a variable into the function
 	// Output returned data
 	$("#userLatLon").html('Latitude: '+loc.coords.latitude+', Longitude: '+loc.coords.longitude+', Accuracy: '+loc.coords.accuracy);
 	
-	var url = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=" + loc.coords.latitude + "," + loc.coords.longitude + "&format=json&num_of_days=0&key=ge2vsdjj3z6qs6ycsjxx3ghk&fx=no&extra=localObsTime&includeLocation=yes";
+	var url = "https://api.worldweatheronline.com/free/v1/weather.ashx?q=" + loc.coords.latitude + "," + loc.coords.longitude + "&format=json&num_of_days=0&key=ge2vsdjj3z6qs6ycsjxx3ghk&fx=no&extra=localObsTime&includeLocation=yes";
 	
-	//var url = "http://www.worldweatheronline.com/feed/weather.ashx?q=" + loc + "&format=json&num_of_days=0&key=ec9eff9d00030223112802&fx=no&extra=localObsTime&includeLocation=yes"
+	//var url = "https://www.worldweatheronline.com/feed/weather.ashx?q=" + loc + "&format=json&num_of_days=0&key=ec9eff9d00030223112802&fx=no&extra=localObsTime&includeLocation=yes"
 	
 	var req = $.ajax({
 		url : url,
