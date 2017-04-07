@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Is it raining now?</title>
+    <meta name="robots" content="all" />
+    <meta name="description" content="I work in an office with no windows and I have no idea what the weather is like now.  Tell me if it is raining outside, because I'm too lazy to go check.  Darn, did I remember my umbrella today?" />
+    <meta name="keywords" content="weather, rain, raining, yes/no, simple, is it raining?, microsite, umbrella, is it raining now?, is it raining outside?, is it raining here?, weather radar, weather online, bbc weather, uk weather, weather in uk, whether, the wather, the weather chanel, weather condition, buy umbrella, rain umbrella, local weather, microsites, weather channel, weather eye, weather.com, weather forecast" />
+    <meta name="google-site-verification" content="bg8jFefCWB2ij-CGpxt0zdtveyoe3VlK3OMFfxaHrJ0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/_i/raindrops.png" />
+    <link rel="image_src" href="/_i/raindrops.png" />
+    <link rel="canonical" href="http://www.isitrainingnow.com">
+
+      <meta property="og:title" content="Is it raining now?"/>
+      <meta property="og:image" content="http://www.isitrainingnow.com/_i/raindrops.png"/>
+      <meta property="og:url" content="http://www.isitrainingnow.com/"/>
+      <meta property="og:site_name" content="Is it raining now?"/>
+      <meta property="og:description" content="I work in an office with no windows and I have no idea what the weather is like now.  Tell me if it is raining outside, because I'm too lazy to go check.  Darn, did I remember my umbrella today?"/>
+
+    <meta itemprop="name" content="Is it raining now?" />
+    <meta itemprop="description" content="I work in an office with no windows and I have no idea what the weather is like now.  Tell me if it is raining outside, because I'm too lazy to go check.  Darn, did I remember my umbrella today?" />
+    <meta itemprop="image" content="http://www.isitrainingnow.com/_i/raindrops.png" />
+
+    <link href="/_css/global.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="/_js/geo-min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/_js/site.js" type="text/javascript" charset="utf-8"></script>
+    <!--
+    <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
+    -->
+</head>
+
+<body onLoad="initialize()">
+
+
+<div id="container">
+	<div id="live-geolocation"></div>
+    <div id="answer_wrap"><img src="_i/ajax-loader-new.gif" width="100" height="100" alt="Loading..."></div>
+    <div id="userLocation"></div>
+    <div id="showDetails"><a href="#">Details +</a></div>
+    <div id="userLatLon"></div>
+    <div id="location-form">
+    	<form name="location" method="post">
+    	<span class="field">
+			<label for="zipcode">Zip Code/Postal Code:</label>
+        	<input name="zipcode" id="zipcode" type="text">
+		</span>
+        <span>
+	    	<input type="submit" value="Raining?" class="submit" />
+    	</span>
+		</form>
+    </div>
+	<div id="conditionDescription"></div>
+    
+    <div id="shareThis"> 
+    	<div id="twitterButton">
+           
+            <a href="https://twitter.com/share" data-text="Is it raining now? #weather" class="twitter-share-button" data-lang="en" data-count="vertical">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+
+       	<div id="fbButton">
+        	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.isitrainingnow.com%2F&amp;layout=box_count&amp;show_faces=false&amp;width=65&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:65px; height:65px;" allowTransparency="true"></iframe>
+        </div>
+        
+        <div id="gpButton">
+			<g:plusone size="tall" href="http://www.isitrainingnow.com"></g:plusone>
+        </div>
+    </div>
+
+    <div id="ads"> 
+    	<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-0621539625535130";
+		/* 728x90, created 10/26/09 */
+		google_ad_slot = "0434156802";
+		google_ad_width = 728;
+		google_ad_height = 90;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js" async>
+		</script>
+  </div>
+  <div id="footer"> 
+    	Data provided by <a href="http://www.worldweatheronline.com/" title="Free local weather content provider" target="_blank">World Weather Online</a>.
+  </div>
+</div>
+
+<script type="text/javascript">
+$("#showDetails a").click(function () {
+	$("#userLatLon").fadeToggle("slow");
+	$("#conditionDescription").fadeToggle("slow");
+	$(this).text($(this).text() == 'Details +' ? 'Details -' : 'Details +'); 
+}); 
+</script>
+
+<script src='http://isitrainingnow.ideascale.com/a/feedbackWidgetScript.do'></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11185447-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>
