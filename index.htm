@@ -44,7 +44,7 @@
 
 </head>
 
-<body onLoad="initialize()">
+<body>
 
 
 <div id="container">
@@ -108,6 +108,54 @@
     $( document ).ready(function() {
         var x = document.getElementById("userLatLon");
 
+        function get_WeatherJSON(position) {//pass a variable into the function
+            // Output returned data
+            $("#userLatLon").html('Latitude: '+ position.coords.latitude+', Longitude: '+position.coords.longitude+', Accuracy: '+ position.coords.accuracy);
+
+            var url = "https://api.wunderground.com/api/260109016da23b22/conditions/q/" + position.coords.latitude + "," + position.coords.longitude + ".json";
+            //var url = "https://api.wunderground.com/api/260109016da23b22/conditions/q/42.068,-101.445.json";
+
+            var req = $.ajax({
+                url : url,
+                dataType : "jsonp",
+                timeout : 10000
+            });
+
+            req.success(function(data) {
+                console.log(data);
+                show_condition(data);
+            });
+
+            req.error(function() {
+                show_error();
+            });
+        }
+
+        function show_condition(data) {
+            var currentWeather = data['current_observation']['weather'];
+            console.log(currentWeather);
+
+            if(currentWeather) {
+                if(currentWeather.match("rain") || currentWeather.match("Rain")) {
+                    $('<div id="answer-yes">Yes</div>').replaceAll('#answer_wrap');
+                } else {
+                    $('<div id="answer-no">No</div>').replaceAll('#answer_wrap');
+                }
+                $("#conditionDescription").html(currentWeather);
+                document.getElementById("userLocation").style.display = "block";
+                document.getElementById("showDetails").style.display = "block";
+                document.getElementById("shareThis").style.display = "block";
+                document.getElementById("ads").style.display = "block";
+                document.getElementById("footer").style.display="block";
+            } else {
+                $("#conditionDescription").html('condition code not found');
+            }
+        }
+
+        function show_error() {
+            $("#live-geolocation").html('Unable to determine your current weather.');
+        }
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -118,11 +166,12 @@
 
         function showPosition(position) {
             x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+            get_WeatherJSON(position);
         }
         getLocation();
     });
 </script>
-<script src="/_js/site.js" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript">
 $("#showDetails a").click(function () {
 	$("#userLatLon").fadeToggle("slow");
