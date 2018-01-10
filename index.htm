@@ -5,7 +5,6 @@
     <title>Is it raining now?</title>
     <meta name="robots" content="all" />
     <meta name="description" content="I work in an office with no windows and I have no idea what the weather is like now.  Tell me if it is raining outside, because I'm too lazy to go check.  Darn, did I remember my umbrella today?" />
-    <meta name="keywords" content="weather, rain, raining, yes/no, simple, is it raining?, microsite, umbrella, is it raining now?, is it raining outside?, is it raining here?, weather radar, weather online, bbc weather, uk weather, weather in uk, whether, the wather, the weather chanel, weather condition, buy umbrella, rain umbrella, local weather, microsites, weather channel, weather eye, weather.com, weather forecast" />
     <meta name="google-site-verification" content="bg8jFefCWB2ij-CGpxt0zdtveyoe3VlK3OMFfxaHrJ0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -24,14 +23,81 @@
     <meta itemprop="description" content="I work in an office with no windows and I have no idea what the weather is like now.  Tell me if it is raining outside, because I'm too lazy to go check.  Darn, did I remember my umbrella today?" />
     <meta itemprop="image" content="https://www.isitrainingnow.com/_i/raindrops.png" />
 
-    <link href="/_css/global.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            margin:0;
+            padding:0;
+        }
 
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        #container {
+            padding-top: 10%;
+            margin: 0 auto;
+            width: 100%;
+            text-align:center;
+        }
 
-    <!--
-    <script src="https://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
-    -->
+        #userLocation {
+            font-size:24px;
+        }
+
+        #answer-yes, #answer-no {
+            font-size:300px;
+        }
+
+        @media
+        screen and (max-width: 400px),
+        only screen and (max-device-width: 400px) {
+            #answer-yes, #answer-no {
+                font-size:200px;
+            }
+        }
+
+        #answer-yes {
+            color:#FF0000;
+        }
+
+        #answer-no {
+            color:#00FF00;
+        }
+
+        #showDetails {
+            margin-top: 10px;
+            font-size:10px;
+        }
+
+        #conditionDescription {
+            font-size:14px;
+            font-style:italic;
+        }
+
+        #shareThis {
+            text-align:center;
+            padding-top: 100px;
+            vertical-align:bottom;
+        }
+
+        #twitterButton, #fbButton, #gpButton {
+            display:inline-block;
+            vertical-align:bottom;
+            height:65px;
+            padding: 0 20px;
+        }
+
+        #ads {
+            text-align:center;
+            padding-top: 20px;
+        }
+
+        #footer {
+            font-size:12px;
+        }
+
+        #location-form, #userLocation, #showDetails, #conditionDescription, #userLatLon, #shareThis, #ads, #footer {
+            display: none;
+        }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11185447-1"></script>
     <script>
@@ -41,7 +107,6 @@
 
         gtag('config', 'UA-11185447-1');
     </script>
-
 </head>
 
 <body>
@@ -106,7 +171,7 @@
 
   </div>
 </div>
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
     $( document ).ready(function() {
         var x = document.getElementById("userLatLon");
@@ -182,7 +247,6 @@ $("#showDetails a").click(function () {
 	$(this).text($(this).text() == 'Details +' ? 'Details -' : 'Details +'); 
 }); 
 </script>
-
 
 </body>
 </html>
