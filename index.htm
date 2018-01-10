@@ -28,8 +28,7 @@
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script src="/_js/geo-min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/_js/site.js" type="text/javascript" charset="utf-8"></script>
+
     <!--
     <script src="https://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
     -->
@@ -105,6 +104,25 @@
   </div>
 </div>
 
+<script>
+    $( document ).ready(function() {
+        var x = document.getElementById("userLatLon");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        }
+        getLocation();
+    });
+</script>
+<script src="/_js/site.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $("#showDetails a").click(function () {
 	$("#userLatLon").fadeToggle("slow");
