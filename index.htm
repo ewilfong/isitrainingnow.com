@@ -118,7 +118,7 @@
             });
 
             req.success(function(data) {
-                console.log(data);
+                //console.log(data);
                 show_condition(data);
             });
 
@@ -129,7 +129,7 @@
 
         function show_condition(data) {
             var currentWeather = data['current_observation']['weather'];
-            console.log(currentWeather);
+            //console.log(currentWeather);
 
             if(currentWeather) {
                 if(currentWeather.match("rain") || currentWeather.match("Rain")) {
