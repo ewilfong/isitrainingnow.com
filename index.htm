@@ -174,8 +174,6 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
     $( document ).ready(function() {
-        var x = document.getElementById("userLatLon");
-
         function get_WeatherJSON(position) {//pass a variable into the function
             // Output returned data
             $("#userLatLon").html('Latitude: '+ position.coords.latitude+', Longitude: '+position.coords.longitude+', Accuracy: '+ position.coords.accuracy);
@@ -201,6 +199,7 @@
 
         function show_condition(data) {
             var currentWeather = data['current_observation']['weather'];
+            var weatherLocation = data['current_observation']['display_location']['full'];
             //console.log(currentWeather);
 
             if(currentWeather) {
@@ -210,6 +209,7 @@
                     $('<div id="answer-no">No</div>').replaceAll('#answer_wrap');
                 }
                 $("#conditionDescription").html(currentWeather);
+                $("#userLocation").html(weatherLocation);
                 document.getElementById("userLocation").style.display = "block";
                 document.getElementById("showDetails").style.display = "block";
                 document.getElementById("shareThis").style.display = "block";
@@ -226,7 +226,7 @@
 
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
+                navigator.geolocation.getCurrentPosition(get_WeatherJSON);
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
