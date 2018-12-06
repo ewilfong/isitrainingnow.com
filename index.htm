@@ -35,28 +35,31 @@
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             margin:0;
             padding:0;
+            font-size: 12px;
+            line-height: 1;
         }
 
         #container {
-            padding-top: 10%;
-            margin: 0 auto;
+            /*padding-top: 10%;
+            margin: 0 auto;*/
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
             width: 100%;
-            text-align:center;
+            text-align: center;
         }
 
         #userLocation {
-            font-size:24px;
+            font-size: 24px;
         }
 
         #answer-yes, #answer-no {
-            font-size:300px;
+            font-size: 200px;
         }
 
-        @media
-        screen and (max-width: 400px),
-        only screen and (max-device-width: 400px) {
+        @media (min-width: 400px) {
             #answer-yes, #answer-no {
-                font-size:200px;
+                font-size: 250px;
             }
         }
 
@@ -70,34 +73,29 @@
 
         #showDetails {
             margin-top: 10px;
-            font-size:10px;
         }
 
-        #conditionDescription {
-            font-size:14px;
-            font-style:italic;
+        #userLatLon, #conditionDescription {
+            line-height: 1.5;
+            font-style: italic;
         }
 
         #shareThis {
-            text-align:center;
-            padding-top: 100px;
-            vertical-align:bottom;
+            text-align: center;
+            padding-top: 40px;
+            vertical-align: bottom;
         }
 
         #twitterButton, #fbButton, #gpButton {
-            display:inline-block;
-            vertical-align:bottom;
-            height:65px;
-            padding: 0 20px;
+            display: inline-block;
+            vertical-align: bottom;
+            height: 65px;
+            padding: 0 1px;
         }
 
         #ads {
-            text-align:center;
+            text-align: center;
             padding-top: 20px;
-        }
-
-        #footer {
-            font-size:12px;
         }
 
         #location-form, #userLocation, #showDetails, #conditionDescription, #userLatLon, #shareThis, #ads, #footer {
