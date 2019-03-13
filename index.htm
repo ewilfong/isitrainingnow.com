@@ -170,9 +170,8 @@
     </div>
 
   <div id="footer">
-    Data provided by Weather Underground.<br />
-      <a href="https://www.wunderground.com" title="Weather Underground" target="_blank"><img src="/_i/wundergroundLogo_4c_horz.png" alt="Weather Underground logo" width="90" height="21" /></a>
-
+      <a href="https://darksky.net/poweredby/">Powered by Dark
+          Sky</a>
   </div>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -182,8 +181,7 @@
             // Output returned data
             $("#userLatLon").html('Latitude: '+ position.coords.latitude+', Longitude: '+position.coords.longitude+', Accuracy: '+ position.coords.accuracy);
 
-            var url = "https://api.wunderground.com/api/260109016da23b22/conditions/q/" + position.coords.latitude + "," + position.coords.longitude + ".json";
-            //var url = "https://api.wunderground.com/api/260109016da23b22/conditions/q/42.068,-101.445.json";
+            var url = "https://api.darksky.net/forecast/150fc5cfeac3bd2d2fdb63aab310519f/" + position.coords.latitude + "," + position.coords.longitude;
 
             var req = $.ajax({
                 url : url,
@@ -192,7 +190,7 @@
             });
 
             req.success(function(data) {
-                //console.log(data);
+                console.log(data);
                 show_condition(data);
             });
 
@@ -202,20 +200,20 @@
         }
 
         function show_condition(data) {
-            var currentWeather = data['current_observation']['weather'];
-            var weatherLocation = data['current_observation']['display_location']['full'];
-            //console.log(currentWeather);
+            var currentWeather = data['currently']['icon'];
+            //var weatherLocation = data['current_observation']['display_location']['full'];
+            console.log(currentWeather);
 
             if(currentWeather) {
                 dataLayer.push({'event': 'optimize.activate'});
-                if(currentWeather.match("rain") || currentWeather.match("Rain")) {
+                if(currentWeather.match("rain") || currentWeather.match("sleet")) {
                     $('<div id="answer-yes">Yes</div>').replaceAll('#answer_wrap');
                 } else {
                     $('<div id="answer-no">No</div>').replaceAll('#answer_wrap');
                 }
                 $("#conditionDescription").html(currentWeather);
-                $("#userLocation").html(weatherLocation);
-                document.getElementById("userLocation").style.display = "block";
+                //$("#userLocation").html(weatherLocation);
+                //document.getElementById("userLocation").style.display = "block";
                 document.getElementById("showDetails").style.display = "block";
                 document.getElementById("shareThis").style.display = "block";
                 document.getElementById("footer").style.display="block";
