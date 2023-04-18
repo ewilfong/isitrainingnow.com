@@ -175,10 +175,11 @@
 <script>
     $( document ).ready(function() {
         function get_WeatherJSON(position) {//pass a variable into the function
+            const openWeatherAPIKey = 'cb5ee06010c97b5ef19393f495180f02';
             // Output returned data
             $("#userLatLon").html('Latitude: '+ position.coords.latitude+', Longitude: '+position.coords.longitude+', Accuracy: '+ position.coords.accuracy);
 
-            var url = "https://api.darksky.net/forecast/150fc5cfeac3bd2d2fdb63aab310519f/" + position.coords.latitude + "," + position.coords.longitude;
+            var url = "https://api.openweathermap.org/data/3.0/onecall?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=" + openWeatherAPIKey;
 
             var req = $.ajax({
                 url : url,
@@ -197,9 +198,9 @@
         }
 
         function show_condition(data) {
-            var currentWeather = data['currently']['icon'];
+            var currentWeather = data['current']['weather'];
             //var weatherLocation = data['current_observation']['display_location']['full'];
-            //console.log(currentWeather);
+            console.log(currentWeather);
 
             if(currentWeather) {
                 dataLayer.push({'event': 'optimize.activate'});
