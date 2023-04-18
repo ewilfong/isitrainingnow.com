@@ -166,9 +166,7 @@
             </div>
         </div>
 
-        <div id="footer">
-          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-        </div>
+
     </div>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -179,7 +177,9 @@
             // Output returned data
             $("#userLatLon").html('Latitude: '+ position.coords.latitude+', Longitude: '+position.coords.longitude+', Accuracy: '+ position.coords.accuracy);
 
-            var url = "https://api.openweathermap.org/data/3.0/onecall?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=" + openWeatherAPIKey;
+            var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=" + openWeatherAPIKey;
+
+            console.log(url);
 
             var req = $.ajax({
                 url : url,
@@ -198,23 +198,26 @@
         }
 
         function show_condition(data) {
-            var currentWeather = data['current']['weather'];
+            const currentWeather = data['weather']['0']['main'];
+            const currentWeatherDescription = data['weather']['0']['description'];
+            const currentWeatherIconURL = 'https://openweathermap.org/img/wn/' + data['weather']['0']['icon'] + '@2x.png';
             //var weatherLocation = data['current_observation']['display_location']['full'];
             console.log(currentWeather);
+            console.log(data);
 
             if(currentWeather) {
                 dataLayer.push({'event': 'optimize.activate'});
-                if(currentWeather.match("rain") || currentWeather.match("sleet")) {
+                if(currentWeather.match("Thunderstorm") || currentWeather.match("Drizzle") || currentWeather.match("Rain")) {
                     $('<div id="answer-yes">Yes</div>').replaceAll('#answer_wrap');
                 } else {
                     $('<div id="answer-no">No</div>').replaceAll('#answer_wrap');
                 }
-                $("#conditionDescription").html(currentWeather);
+                $("#conditionDescription").html(currentWeather + '<br />' + currentWeatherDescription + '<br /><img src='+ currentWeatherIconURL + ' />');
                 //$("#userLocation").html(weatherLocation);
                 //document.getElementById("userLocation").style.display = "block";
                 document.getElementById("showDetails").style.display = "block";
                 document.getElementById("shareThis").style.display = "block";
-                document.getElementById("footer").style.display="block";
+                //document.getElementById("footer").style.display="block";
             } else {
                 $("#conditionDescription").html('condition code not found');
             }
