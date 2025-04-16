@@ -188,14 +188,12 @@
                 url : url,
                 dataType : "jsonp",
                 timeout : 10000
-            });
-
-            req.success(function(data) {
+            })
+            .then(function(data) { // If the request is successful, this block will be called.
                 //console.log(data);
                 show_condition(data);
-            });
-
-            req.error(function() {
+            })
+            .catch(function() { // If the request fails, this block will be called.
                 show_error();
             });
         }
