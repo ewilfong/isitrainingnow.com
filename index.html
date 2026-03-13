@@ -224,21 +224,32 @@
             }
         }
 
-        function show_error() {
-            $("#live-geolocation").html('Unable to determine your current weather.');
+        function show_error(error) {
+            var message;
+            switch(error && error.code) {
+                case 1:
+                    message = 'Location access denied. Please allow location access and refresh the page.';
+                    break;
+                case 2:
+                    message = 'Unable to determine your location. Please try again.';
+                    break;
+                case 3:
+                    message = 'Location request timed out. Please try again.';
+                    break;
+                default:
+                    message = 'Unable to determine your current weather.';
+            }
+            $("#answer_wrap").hide();
+            $("#live-geolocation").html(message);
         }
 
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(get_WeatherJSON);
+                navigator.geolocation.getCurrentPosition(get_WeatherJSON, show_error);
             } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
+                $("#answer_wrap").hide();
+                $("#live-geolocation").html("Geolocation is not supported by this browser.");
             }
-        }
-
-        function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-            get_WeatherJSON(position);
         }
         getLocation();
     });
